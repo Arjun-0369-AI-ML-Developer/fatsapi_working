@@ -43,3 +43,14 @@ def update_todo(todo_id:int,updated_todo:testing):
             return {"message": "Data updated","data":todo[index]}
     return {"error":"Todo not found"}
 
+
+@app.delete("/todo/{todo_id}")
+def delete_todo(todo_id:int):
+    for index,item in enumerate(todo):
+        print("-=-=-=-= index -=-=-=",index)
+        print("-=-=-=-= item -=-=-=",item)
+        if item.id == todo_id:
+            deleted_item = todo.pop(index)
+            return {"message": "Data Deleted","data": deleted_item}
+    return {"error":"Todo not found"}
+
